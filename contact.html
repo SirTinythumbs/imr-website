@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Ian Roberts
+    Final Project
+    I360 Web Design
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>imr.cool</title>
+    <!-- resets browser defaults -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/3680edfbdb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+    <!--FONTS-->
+    <link rel="stylesheet" href="https://use.typekit.net/pkg7dro.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav id="mySidenav" class="sidenav">
+        <a href="index.html"><img class="sidenav-img" src="images/imr-logo-03.svg" alt="Logo"></a>
+        <a class="closebtn">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="selected">Contact</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="resume.html">Resume</a>
+    </nav>
+    <div class="openbtn">
+        <i class="fas fa-bars fa-2x"></i>
+        <span class="menu-text">menu</span>
+    </div>
+    <div class="all-over-bkg"></div>
+    <header>
+        <a href="index.html"><img class="header-img" src="images/imr-logo-03.svg" alt="Logo"></a>
+    </header>
+    
+    <div class="container">
+        <h1 class="page-title">Contact Me</h1>
+        <div class="content-wrap">
+            <div class="form-container">
+                <form action="action_page.php">
+
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                
+                    <input type="submit" value="Submit" class="btn">
+                
+                </form>
+            </div>
+            <div id="mapid"></div>
+        </div>
+
+        <!-- Icons from FontAwesome.com -->
+        <div class="buttons">
+            <a href="https://www.instagram.com/dothebassandsuch/" target="_blank"><i class="fab fa-instagram social"></i></a>
+            <a href="https://www.instagram.com/dothebassandsuch/" target="_blank"><i class="fab fa-behance-square social"></i></a>
+            <a href="https://www.instagram.com/dothebassandsuch/" target="_blank"><i class="fab fa-flickr social"></i></a>
+            <a href="https://www.youtube.com/channel/UCtzK6xLm5od2hDtz8XM_N9Q?view_as=subscriber" target="_blank"><i class="fab fa-youtube social"></i></a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/nav.js"></script>
+
+    <!-- Map courtesy of Leafletjs.com -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script>
+        var mymap = L.map('mapid').setView([39.172721, -86.523242], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+        }).addTo(mymap);
+        var marker = L.marker([39.172120, -86.492680]).addTo(mymap);
+        marker.bindPopup("<b>IMR Design</b>").openPopup();
+    </script>
+</body>
+</html>
